@@ -1,4 +1,4 @@
-function RecentSearches({ searches, onSearch }) {
+function RecentSearches({ searches, onSelect }) {
   if (searches.length === 0) return null
 
   return (
@@ -8,7 +8,7 @@ function RecentSearches({ searches, onSearch }) {
         {searches.map(city => (
           <button
             key={city}
-            onClick={() => onSearch(city)}
+            onClick={() => onSelect(city)}
             className="px-3 py-1 bg-white/20 hover:bg-white/30 text-white text-sm rounded-full transition-colors"
           >
             {city}

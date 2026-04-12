@@ -12,17 +12,25 @@ function SearchBar({ onSearch, loading }) {
     <form onSubmit={handleSubmit} className="flex gap-2">
       <input
         type="text"
+        id="city"
+        name="city"
         value={input}
         onChange={(e) => setInput(e.target.value)}
-        placeholder="Enter city name..."
-        className="flex-1 px-4 py-2 rounded-lg border outline-none"
+        placeholder="Search for a city..."
+        className="flex-1 px-4 min-w-40 py-3 rounded-2xl border-none outline-none 
+                   bg-white/20 text-white placeholder-white/80
+                   focus:bg-white/30 focus:ring-2 focus:ring-white/50
+                   transition-all duration-300"
       />
       <button
         type="submit"
         disabled={loading}
-        className="px-6 py-2 bg-blue-500 text-white rounded-lg disabled:opacity-50"
+        className="px-6 py-3 bg-white text-blue-600 font-semibold
+                   rounded-xl hover:bg-blue-50 active:scale-95
+                   disabled:opacity-50 transition-all duration-300
+                   shadow-lg hover:shadow-xl"
       >
-        {loading ? "Searching..." : "Search"}
+        {loading ? "..." : "Search"}
       </button>
     </form>
   )

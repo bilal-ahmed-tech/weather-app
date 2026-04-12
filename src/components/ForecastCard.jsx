@@ -14,7 +14,7 @@ function ForecastCard({ day, units }) {
       <p className="font-semibold text-sm">{dayName}</p>
       <img src={iconUrl} alt={description} className="w-12 h-12" />
       <p className="text-xl font-bold">{temp}{unit}</p>
-      <p className="text-xs text-white/60 capitalize">{description}</p>
+      <p className="text-xs text-white/80 capitalize">{description}</p>
     </div>
   )
 }

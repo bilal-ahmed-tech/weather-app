@@ -6,19 +6,19 @@ import ForecastCard from "./components/ForecastCard"
 import { getTimeOfDay } from "./utils/timeUtils"
 
 const bgConfig = {
-  Clear_day:          "from-sky-400 to-blue-500",
-  Clear_dawn:         "from-orange-400 to-pink-500",
-  Clear_dusk:         "from-orange-400 to-purple-600",
+  Clear_day:          "from-sky-500 to-blue-600",
+  Clear_dawn:         "from-orange-500 to-pink-600",
+  Clear_dusk:         "from-orange-500 to-purple-700",
   Clear_night:        "from-indigo-900 to-slate-900",
-  Clouds_day:         "from-gray-400 to-slate-600",
+  Clouds_day:         "from-gray-500 to-slate-700",
   Clouds_night:       "from-gray-700 to-slate-900",
   Rain_day:           "from-blue-700 to-slate-800",
   Rain_night:         "from-blue-900 to-slate-900",
   Thunderstorm_day:   "from-gray-800 to-slate-900",
   Thunderstorm_night: "from-gray-900 to-black",
-  Snow_day:           "from-blue-400 to-slate-500",
-  Snow_night:         "from-blue-400 to-indigo-900",
-  Haze_day:           "from-orange-300 to-yellow-500",
+  Snow_day:           "from-blue-500 to-slate-600",
+  Snow_night:         "from-blue-500 to-indigo-900",
+  Haze_day:           "from-orange-500 to-amber-600",
   Haze_night:         "from-gray-600 to-slate-800",
 }
 

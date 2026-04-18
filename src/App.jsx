@@ -6,34 +6,55 @@ import ForecastCard from "./components/ForecastCard"
 import { getTimeOfDay } from "./utils/timeUtils"
 
 const bgConfig = {
-  Clear_day:          "from-sky-500 to-blue-600",
-  Clear_dawn:         "from-orange-500 to-pink-600",
-  Clear_dusk:         "from-orange-500 to-purple-700",
-  Clear_night:        "from-indigo-900 to-slate-900",
-  Clouds_day:         "from-gray-500 to-slate-700",
-  Clouds_night:       "from-gray-700 to-slate-900",
-  Rain_day:           "from-blue-700 to-slate-800",
-  Rain_night:         "from-blue-900 to-slate-900",
-  Thunderstorm_day:   "from-gray-800 to-slate-900",
-  Thunderstorm_night: "from-gray-900 to-black",
-  Snow_day:           "from-blue-500 to-slate-600",
-  Snow_night:         "from-blue-500 to-indigo-900",
-  Haze_day:           "from-orange-500 to-amber-600",
-  Haze_night:         "from-gray-600 to-slate-800",
+  // Clear
+  Clear_day:          "from-sky-400 via-blue-500 to-blue-700",
+  Clear_dawn:         "from-amber-400 via-rose-400 to-purple-600",
+  Clear_dusk:         "from-orange-400 via-rose-500 to-indigo-700",
+  Clear_night:        "from-slate-900 via-indigo-950 to-slate-950",
+
+  // Clouds
+  Clouds_day:         "from-slate-400 via-slate-500 to-slate-600",
+  Clouds_dawn:        "from-slate-400 via-rose-300 to-slate-500",
+  Clouds_night:       "from-slate-700 via-slate-800 to-slate-900",
+
+  // Rain
+  Rain_day:           "from-slate-500 via-blue-700 to-slate-800",
+  Rain_night:         "from-slate-800 via-blue-950 to-slate-950",
+
+  // Thunderstorm
+  Thunderstorm_day:   "from-slate-700 via-gray-800 to-slate-900",
+  Thunderstorm_night: "from-gray-900 via-slate-950 to-black",
+
+  // Snow
+  Snow_day:           "from-sky-200 via-blue-300 to-slate-400",
+  Snow_night:         "from-slate-600 via-blue-900 to-slate-900",
+
+  // Haze / Mist / Fog
+  Haze_day:           "from-amber-300 via-orange-400 to-amber-600",
+  Haze_night:         "from-slate-600 via-gray-700 to-slate-800",
+  Mist_day:           "from-slate-300 via-gray-400 to-slate-500",
+  Mist_night:         "from-slate-600 via-slate-700 to-slate-800",
+
+  // Drizzle
+  Drizzle_day:        "from-slate-400 via-sky-500 to-slate-600",
+  Drizzle_night:      "from-slate-700 via-sky-900 to-slate-900",
 }
+
+// Default — deep neutral blue-gray, works for any unknown condition
+const DEFAULT_BG = "from-slate-600 via-slate-700 to-slate-800"
 
 function App() {
   const { weather, forecast, loading, error, searchCity, getLocation, recentSearches, units, toggleUnits } = useWeather()
-
+  
   const condition = weather?.weather[0]?.main
   const timeOfDay = weather
-    ? getTimeOfDay(weather.sys.sunrise, weather.sys.sunset)
-    : "day"
+  ? getTimeOfDay(weather.sys.sunrise, weather.sys.sunset)
+  : "day"
   const bgKey = `${condition}_${timeOfDay}`
-  const bg = bgConfig[bgKey] || bgConfig[`${condition}_day`] || "from-violet-500 to-purple-700"
+  const bg = bgConfig[bgKey] || bgConfig[`${condition}_day`] || DEFAULT_BG
 
   return (
-    <main className={`min-h-screen bg-gradient-to-br ${bg} p-6 transition-colors duration-700`}>
+    <main className={`min-h-screen bg-linear-to-br ${bg} p-6 transition-colors duration-700`}>
       <div className="max-w-3xl mx-auto">
 
         {/* Header */}

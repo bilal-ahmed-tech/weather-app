@@ -5,7 +5,7 @@
 **Real-time weather at a glance — dynamic backgrounds, detailed forecasts, and a clean UI.**
 
 [![Live Demo](https://img.shields.io/badge/Live%20Demo-Visit%20Site-blue?style=for-the-badge&logo=vercel)](https://weather-app-fawn-one-58.vercel.app/)
-[![GitHub](https://img.shields.io/badge/GitHub-bilal--ahmed--tech-181717?style=for-the-badge&logo=github)](https://github.com/bilal-ahmed-tech)
+[![GitHub](https://img.shields.io/badge/GitHub-bilal--ahmed--tech-181717?style=for-the-badge&logo=github)](https://github.com/bilal-ahmed-tech/weather-app)
 ![React](https://img.shields.io/badge/React-18-61DAFB?style=for-the-badge&logo=react)
 ![TailwindCSS](https://img.shields.io/badge/Tailwind-CSS-38B2AC?style=for-the-badge&logo=tailwind-css)
 
@@ -55,6 +55,18 @@ The app maps every OpenWeatherMap condition + time-of-day to a unique Tailwind g
 | Data | OpenWeatherMap API |
 | Geolocation | Browser Geolocation API |
 | Deployment | Vercel |
+
+---
+
+## 📸 Screenshots
+
+<img src="screenshots/Home.png" width="100%" alt="Home Page with Weather Display" />
+<br/><br/>
+<img src="screenshots/Search.png" width="100%" alt="City Search" />
+<br/><br/>
+<img src="screenshots/Forecast.png" width="100%" alt="Forecast View" />
+<br/><br/>
+<img src="screenshots/Mobile.png" width="100%" alt="Mobile Responsive Design" />
 
 ---
 

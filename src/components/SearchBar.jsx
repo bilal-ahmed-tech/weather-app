@@ -1,15 +1,23 @@
-import { useState } from "react"
+import { useState, useCallback } from "react";
 
 function SearchBar({ onSearch, loading }) {
-  const [input, setInput] = useState("")
+  const [input, setInput] = useState("");
 
-  function handleSubmit(e) {
-    e.preventDefault()
-    onSearch(input)
-  }
+  const handleSubmit = useCallback(
+    (e) => {
+      e.preventDefault();
+      const trimmed = input.trim();
+      if (trimmed === "") return; // ignore empty search
+      onSearch(trimmed);
+    },
+    [input, onSearch]
+  );
 
   return (
-    <form onSubmit={handleSubmit} className="flex gap-2">
+    <form onSubmit={handleSubmit} className="flex gap-2" role="search">
+      <label htmlFor="city" className="sr-only">
+        Search for a city
+      </label>
       <input
         type="text"
         id="city"
@@ -17,10 +25,12 @@ function SearchBar({ onSearch, loading }) {
         value={input}
         onChange={(e) => setInput(e.target.value)}
         placeholder="Search for a city..."
-        className="flex-1 px-4 min-w-40 py-3 rounded-2xl border-none outline-none 
+        className="flex-1 px-4 min-w-10 py-3 rounded-2xl border-none outline-none 
                    bg-white/20 text-white placeholder-white/80
                    focus:bg-white/30 focus:ring-2 focus:ring-white/50
                    transition-all duration-300"
+        disabled={loading}
+        aria-label="City name"
       />
       <button
         type="submit"
@@ -30,10 +40,10 @@ function SearchBar({ onSearch, loading }) {
                    disabled:opacity-50 transition-all duration-300
                    shadow-lg hover:shadow-xl"
       >
-        {loading ? "..." : "Search"}
+        {loading ? "Searching…" : "Search"}
       </button>
     </form>
-  )
+  );
 }
 
-export default SearchBar
+export default SearchBar;

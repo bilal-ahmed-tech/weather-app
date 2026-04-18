@@ -1,16 +1,120 @@
-# React + Vite
+<div align="center">
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# 🌤️ Weather App
 
-Currently, two official plugins are available:
+**Real-time weather at a glance — dynamic backgrounds, detailed forecasts, and a clean UI.**
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-Visit%20Site-blue?style=for-the-badge&logo=vercel)](https://weather-app-fawn-one-58.vercel.app/)
+[![GitHub](https://img.shields.io/badge/GitHub-bilal--ahmed--tech-181717?style=for-the-badge&logo=github)](https://github.com/bilal-ahmed-tech)
+![React](https://img.shields.io/badge/React-18-61DAFB?style=for-the-badge&logo=react)
+![TailwindCSS](https://img.shields.io/badge/Tailwind-CSS-38B2AC?style=for-the-badge&logo=tailwind-css)
 
-## React Compiler
+</div>
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## ✨ Features
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- 🌍 **City Search** — Instant weather lookup for any city worldwide
+- 📍 **Geolocation** — Auto-detects and loads weather for your current location
+- 🌅 **Dynamic Backgrounds** — Gradient changes based on weather condition and time of day (dawn, day, dusk, night)
+- 🌡️ **Full Weather Detail** — Temperature, feels like, humidity, wind speed, visibility, pressure
+- 🕐 **Time-aware UI** — Detects dawn / day / dusk / night for accurate theming
+- 📱 **Fully Responsive** — Works seamlessly on mobile and desktop
+- ⚠️ **Error Handling** — Clear messages for invalid cities or API failures
+- 🦴 **Loading States** — Smooth skeleton/spinner while fetching data
+
+---
+
+## 🎨 Dynamic Background System
+
+The app maps every OpenWeatherMap condition + time-of-day to a unique Tailwind gradient:
+
+| Condition | Time | Background |
+|---|---|---|
+| Clear | Day | Sky blue → Blue |
+| Clear | Dawn | Amber → Rose → Purple |
+| Clear | Dusk | Orange → Rose → Indigo |
+| Clear | Night | Slate → Indigo → Dark |
+| Rain | Day | Slate → Blue → Slate |
+| Thunderstorm | Night | Gray → Slate → Black |
+| Snow | Day | Sky → Blue → Slate |
+| Haze | Day | Amber → Orange |
+| … | … | … |
+
+16+ condition/time combinations for a living, breathing UI.
+
+---
+
+## 🛠️ Tech Stack
+
+| Layer | Technology |
+|---|---|
+| Framework | React 18 |
+| Styling | Tailwind CSS |
+| Data | OpenWeatherMap API |
+| Geolocation | Browser Geolocation API |
+| Deployment | Vercel |
+
+---
+
+## 🚀 Getting Started
+
+```bash
+# Clone the repo
+git clone https://github.com/bilal-ahmed-tech/weather-app.git
+cd weather-app
+
+# Install dependencies
+npm install
+
+# Add your OpenWeatherMap API key
+echo "VITE_WEATHER_KEY=your_api_key_here" > .env
+
+# Start dev server
+npm run dev
+```
+
+> Get a free API key at [openweathermap.org](https://openweathermap.org/api)
+
+---
+
+## 📁 Project Structure
+
+```
+src/
+├── components/       # WeatherCard, SearchBar, ErrorState, Skeleton
+├── hooks/            # useWeather, useGeolocation
+├── services/         # OpenWeatherMap API calls
+├── utils/            # Time-of-day detection, bg mapping
+└── constants/        # API config, condition maps
+```
+
+---
+
+## 🔑 Environment Variables
+
+```env
+VITE_WEATHER_KEY=your_openweathermap_api_key
+```
+
+---
+
+## ⚡ How Time-of-Day Detection Works
+
+The app calculates local sunrise/sunset from the API response and maps the current time into one of four slots:
+
+```
+dawn  → 30 min before sunrise to sunrise
+day   → sunrise to 30 min before sunset
+dusk  → 30 min before sunset to sunset
+night → sunset onwards
+```
+
+This drives both the background gradient and icon selection.
+
+---
+
+## 📄 License
+
+MIT © [Bilal Ahmed](https://github.com/bilal-ahmed-tech)
